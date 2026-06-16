@@ -1,0 +1,1080 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>呼伦贝尔家庭自驾旅行分享版</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #17212b;
+      --muted: #607080;
+      --line: #d9e2e7;
+      --paper: #f7faf8;
+      --white: #ffffff;
+      --green: #2c7a4b;
+      --blue: #2c6f9f;
+      --amber: #b66a1a;
+      --coral: #b94f3c;
+      --dark: #15242b;
+      --shadow: 0 18px 42px rgba(24, 45, 50, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei", sans-serif;
+      line-height: 1.65;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .hero {
+      min-height: 86vh;
+      position: relative;
+      color: #fff;
+      background: linear-gradient(90deg, rgba(14, 33, 38, 0.72), rgba(14, 33, 38, 0.18)),
+        url("assets/hero-grassland.png") center / cover no-repeat;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0 0;
+      height: 22vh;
+      background: linear-gradient(180deg, rgba(247, 250, 248, 0), var(--paper));
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      padding: 72px 0 110px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border: 1px solid rgba(255, 255, 255, 0.42);
+      background: rgba(255, 255, 255, 0.13);
+      backdrop-filter: blur(8px);
+      border-radius: 8px;
+      font-size: 13px;
+      letter-spacing: 0;
+    }
+
+    h1, h2, h3 {
+      margin: 0;
+      letter-spacing: 0;
+      line-height: 1.16;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin-top: 22px;
+      font-size: clamp(38px, 6vw, 74px);
+      font-weight: 800;
+    }
+
+    .hero-copy {
+      max-width: 700px;
+      margin: 22px 0 0;
+      font-size: clamp(17px, 2vw, 22px);
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 32px;
+    }
+
+    .hero-actions a {
+      min-height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 16px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      border: 1px solid rgba(255, 255, 255, 0.48);
+      background: rgba(255, 255, 255, 0.16);
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-actions a.primary {
+      background: #ffffff;
+      color: #203034;
+      border-color: #ffffff;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 72px 0;
+    }
+
+    .section.tight {
+      padding-top: 36px;
+    }
+
+    .band {
+      background: #ffffff;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      font-size: clamp(26px, 3.2vw, 40px);
+    }
+
+    .section-note {
+      max-width: 420px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .facts {
+      position: relative;
+      z-index: 2;
+      margin-top: -72px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+
+    .fact {
+      background: var(--white);
+      border: 1px solid rgba(217, 226, 231, 0.9);
+      border-radius: 8px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      min-height: 118px;
+    }
+
+    .fact span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .fact strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 18px;
+      line-height: 1.28;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: 0 10px 26px rgba(34, 53, 58, 0.08);
+      overflow: hidden;
+    }
+
+    .card-body {
+      padding: 22px;
+    }
+
+    .lead {
+      font-size: 19px;
+      color: #2b3840;
+      margin-top: 0;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 5px 10px;
+      border-radius: 8px;
+      background: #edf6f1;
+      color: #1f6d45;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .pill.blue {
+      background: #e9f3f9;
+      color: #245f89;
+    }
+
+    .pill.amber {
+      background: #fff2df;
+      color: #8d5318;
+    }
+
+    .pill.coral {
+      background: #faece8;
+      color: #9b4637;
+    }
+
+    .photo-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+    }
+
+    .photo-caption {
+      padding: 14px 16px 16px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .route-strip {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .route-stop {
+      position: relative;
+      min-height: 122px;
+      padding: 16px 12px;
+      border-radius: 8px;
+      background: #ffffff;
+      border: 1px solid var(--line);
+    }
+
+    .route-stop::before {
+      content: attr(data-day);
+      display: inline-flex;
+      min-width: 34px;
+      min-height: 28px;
+      align-items: center;
+      justify-content: center;
+      padding: 0 8px;
+      border-radius: 8px;
+      background: var(--dark);
+      color: #fff;
+      font-weight: 800;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .route-stop strong {
+      display: block;
+      line-height: 1.28;
+      font-size: 15px;
+    }
+
+    .route-stop span {
+      display: block;
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.42;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+
+    .day {
+      display: grid;
+      grid-template-columns: 92px 1fr 160px;
+      gap: 18px;
+      align-items: center;
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 16px;
+    }
+
+    .day-num {
+      display: flex;
+      min-height: 66px;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--green), var(--blue));
+      font-weight: 900;
+      font-size: 22px;
+    }
+
+    .day h3 {
+      font-size: 20px;
+    }
+
+    .day p {
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .stay {
+      justify-self: stretch;
+      min-height: 58px;
+      border-left: 3px solid #d7b26d;
+      padding-left: 12px;
+      color: #634919;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+    }
+
+    .highlight {
+      border-left: 5px solid var(--coral);
+      background: #fff8f5;
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 720px;
+    }
+
+    th, td {
+      padding: 13px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      background: #f1f6f4;
+      color: #25333a;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .money {
+      font-weight: 800;
+      color: #244c37;
+      white-space: nowrap;
+    }
+
+    .notice {
+      background: #fff7e8;
+      border: 1px solid #efd4a8;
+      border-radius: 8px;
+      padding: 18px;
+      color: #614314;
+    }
+
+    .notice strong {
+      color: #7b420b;
+    }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+    }
+
+    .check {
+      background: #ffffff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    .check h3 {
+      font-size: 17px;
+      margin-bottom: 10px;
+    }
+
+    .check ul {
+      margin: 0;
+      padding-left: 18px;
+      color: #3b4c55;
+    }
+
+    .check li + li {
+      margin-top: 7px;
+    }
+
+    .split-photo {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .split-photo img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+    }
+
+    .footer {
+      background: #15242b;
+      color: rgba(255, 255, 255, 0.86);
+      padding: 34px 0;
+      font-size: 13px;
+    }
+
+    .footer .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .facts,
+      .grid-3,
+      .checklist {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .grid-2,
+      .split-photo {
+        grid-template-columns: 1fr;
+      }
+
+      .route-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .day {
+        grid-template-columns: 76px 1fr;
+      }
+
+      .stay {
+        grid-column: 2;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .hero-inner,
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .hero {
+        min-height: 82vh;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .section {
+        padding: 52px 0;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-note {
+        margin-top: 12px;
+      }
+
+      .facts,
+      .grid-3,
+      .checklist,
+      .route-strip {
+        grid-template-columns: 1fr;
+      }
+
+      .fact {
+        min-height: auto;
+      }
+
+      .day {
+        grid-template-columns: 1fr;
+      }
+
+      .day-num {
+        min-height: 48px;
+        justify-content: flex-start;
+        padding-left: 16px;
+      }
+
+      .stay {
+        grid-column: auto;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+
+      .hero {
+        min-height: 440px;
+      }
+
+      .section {
+        padding: 36px 0;
+      }
+
+      .card,
+      .fact,
+      .route-stop,
+      .day,
+      .check,
+      .table-wrap,
+      .notice {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">2026 暑假 · 南京往返海拉尔 · 家庭自驾</div>
+      <h1>呼伦贝尔家庭自驾 7 天 6 晚方案</h1>
+      <p class="hero-copy">以海拉尔进出，串起莫日格勒河、额尔古纳湿地、室韦/恩和、根河敖鲁古雅、黑山头和满洲里。重点保留孩子最期待的喂驯鹿体验，同时避免把住宿安排在景区内部。</p>
+      <div class="hero-actions">
+        <a class="primary" href="#route">查看路线</a>
+        <a href="#budget">预算控制</a>
+        <a href="#packing">装备清单</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="container">
+      <div class="facts">
+        <div class="fact">
+          <span>推荐时长</span>
+          <strong>7 天 6 晚优先</strong>
+        </div>
+        <div class="fact">
+          <span>出行人员</span>
+          <strong>4 大 2 小，可扩至 8-9 人</strong>
+        </div>
+        <div class="fact">
+          <span>航线监控</span>
+          <strong>NKG 往返 HLD，仅直飞</strong>
+        </div>
+        <div class="fact">
+          <span>必选体验</span>
+          <strong>根河敖鲁古雅喂驯鹿</strong>
+        </div>
+        <div class="fact">
+          <span>住宿原则</span>
+          <strong>住城区/镇区，不住景区内</strong>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tight" id="summary">
+      <div class="container grid-2">
+        <div>
+          <div class="section-head">
+            <div>
+              <h2 class="section-title">先看结论</h2>
+            </div>
+          </div>
+          <p class="lead">这条线最适合做成“草原 + 森林 + 湿地 + 边境小城”的环线。6 天可以走完核心点，但会比较赶；7 天能把喂驯鹿、边境公路、满洲里夜景都安排得更从容。</p>
+          <div class="pill-row">
+            <span class="pill">7 天更稳</span>
+            <span class="pill blue">MPV 可走常规路线</span>
+            <span class="pill amber">机票低于 8500 可锁</span>
+            <span class="pill coral">总预算 20000 偏紧</span>
+          </div>
+        </div>
+        <div class="notice">
+          <strong>预算提醒：</strong>如果 20000 元包含 6 人本地费用和 3 大 2 小往返机票，会比较吃紧。更现实的省钱版约 21000-25000 元，舒适版约 26000-33000 元。想压进 20000，需要机票、租车、酒店同时踩低价。
+        </div>
+      </div>
+    </section>
+
+    <section class="section band" id="flights">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">机票监控快照</h2>
+          <p class="section-note">截至 2026-06-16 09:41 的可核价结果。继续每 2 小时监控，若 3 大 2 小均摊人均低于 2200 元会优先提醒。</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>日期组合</th>
+                <th>平台</th>
+                <th>去程</th>
+                <th>返程</th>
+                <th>成人价估算</th>
+                <th>3大2小总价</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>7/16 出发，7/23 返回，7 天</td>
+                <td>同程低价日历</td>
+                <td>厦航 MF8587，12:45-16:00，¥1300</td>
+                <td>吉祥 HO2242，13:15-16:35，¥1090</td>
+                <td class="money">¥2390/人</td>
+                <td class="money">¥11950</td>
+              </tr>
+              <tr>
+                <td>8/6 出发，8/13 返回，7 天</td>
+                <td>同程低价日历</td>
+                <td>厦航 MF8587，12:45-16:00，¥1369</td>
+                <td>厦航 MF8588，17:00-20:20，¥1178</td>
+                <td class="money">¥2547/人</td>
+                <td class="money">¥12735</td>
+              </tr>
+              <tr>
+                <td>7/23 出发，7/30 返回，7 天</td>
+                <td>同程低价日历</td>
+                <td>厦航 MF8587，12:45-16:00，¥1292</td>
+                <td>厦航 MF8588，17:00-20:20，¥1296</td>
+                <td class="money">¥2588/人</td>
+                <td class="money">¥12940</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="section-note" style="margin-top: 14px;">儿童票规则页面未清楚展示，暂按成人价保守估算。去哪儿两方向仍只返回“查价”，没有可直接核价的缓存价；携程和飞猪按当前限制未使用。</p>
+      </div>
+    </section>
+
+    <section class="section" id="route">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">7 天 6 晚路线</h2>
+          <p class="section-note">不绕进高风险草原小路，优先走铺装公路、正规景区道路和城区/镇区住宿点。</p>
+        </div>
+
+        <div class="route-strip">
+          <div class="route-stop" data-day="D1">
+            <strong>海拉尔</strong>
+            <span>抵达、取车、补给</span>
+          </div>
+          <div class="route-stop" data-day="D2">
+            <strong>莫日格勒河 · 额尔古纳</strong>
+            <span>草原曲水、湿地日落</span>
+          </div>
+          <div class="route-stop" data-day="D3">
+            <strong>白桦林 · 恩和/室韦</strong>
+            <span>森林和边境小镇</span>
+          </div>
+          <div class="route-stop" data-day="D4">
+            <strong>根河 · 敖鲁古雅</strong>
+            <span>喂驯鹿，行程放轻</span>
+          </div>
+          <div class="route-stop" data-day="D5">
+            <strong>黑山头</strong>
+            <span>草原日落、牧户体验</span>
+          </div>
+          <div class="route-stop" data-day="D6">
+            <strong>边防公路 · 满洲里</strong>
+            <span>186 彩带河、城市夜景</span>
+          </div>
+          <div class="route-stop" data-day="D7">
+            <strong>呼伦湖 · 海拉尔</strong>
+            <span>轻松返程</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section band">
+      <div class="container split-photo">
+        <img src="assets/wetland-sunset.png" alt="额尔古纳湿地日落示意图">
+        <div>
+          <h2 class="section-title">把风景排在顺路的位置</h2>
+          <p class="lead">D2 住额尔古纳，是为了把莫日格勒河和额尔古纳湿地的节奏打开。上午看草原曲水，下午转湿地，傍晚回城区吃饭住宿，第二天再往白桦林和边境小镇方向走。</p>
+          <div class="pill-row">
+            <span class="pill blue">额尔古纳市区住宿</span>
+            <span class="pill">停车和吃饭更方便</span>
+            <span class="pill amber">不住湿地景区内</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="timeline">
+          <div class="day">
+            <div class="day-num">D1</div>
+            <div>
+              <h3>南京 - 海拉尔</h3>
+              <p>抵达后取车，检查车辆，补水、防晒、零食和常用药。第一天不安排长距离赶路。</p>
+            </div>
+            <div class="stay">住海拉尔区城区</div>
+          </div>
+          <div class="day">
+            <div class="day-num">D2</div>
+            <div>
+              <h3>海拉尔 - 莫日格勒河 - 额尔古纳湿地</h3>
+              <p>草原曲水和湿地日落是这天的重点。遇到雨天就减少观景台停留，优先保证路况。</p>
+            </div>
+            <div class="stay">住额尔古纳市区</div>
+          </div>
+          <div class="day">
+            <div class="day-num">D3</div>
+            <div>
+              <h3>额尔古纳 - 白桦林/恩和 - 室韦</h3>
+              <p>从草原切到森林和边境小镇，节奏比纯赶路舒服。带娃优先选独卫、热水稳定的镇区酒店。</p>
+            </div>
+            <div class="stay">住室韦或恩和镇区</div>
+          </div>
+          <div class="day highlight">
+            <div class="day-num">D4</div>
+            <div>
+              <h3>室韦/恩和 - 根河 - 敖鲁古雅使鹿部落</h3>
+              <p>孩子最期待的喂驯鹿放在这天。只使用现场允许的饲料，不追赶动物，听工作人员安排。</p>
+            </div>
+            <div class="stay">住根河市区</div>
+          </div>
+          <div class="day">
+            <div class="day-num">D5</div>
+            <div>
+              <h3>根河 - 额尔古纳 - 黑山头</h3>
+              <p>从森林回到草原，安排牧户体验或看日落。骑马项目按孩子状态决定，不勉强。</p>
+            </div>
+            <div class="stay">住黑山头镇区</div>
+          </div>
+          <div class="day">
+            <div class="day-num">D6</div>
+            <div>
+              <h3>黑山头 - 边防公路/186 彩带河 - 满洲里</h3>
+              <p>边境公路和草原坡地是视觉重点，下午进入满洲里，晚上逛市区夜景。</p>
+            </div>
+            <div class="stay">住满洲里市区</div>
+          </div>
+          <div class="day">
+            <div class="day-num">D7</div>
+            <div>
+              <h3>满洲里 - 呼伦湖/扎赉诺尔 - 海拉尔 - 南京</h3>
+              <p>返程日只保留一个轻量景点，给还车、加油、机场手续留足时间。</p>
+            </div>
+            <div class="stay">返程</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section band">
+      <div class="container grid-3">
+        <div class="card photo-card">
+          <img src="assets/reindeer-family.png" alt="敖鲁古雅喂驯鹿示意图">
+          <div class="photo-caption">必选体验：根河敖鲁古雅喂驯鹿，放在 D4，下午节奏尽量轻松。</div>
+        </div>
+        <div class="card photo-card">
+          <img src="assets/wetland-sunset.png" alt="额尔古纳湿地示意图">
+          <div class="photo-caption">D2：额尔古纳湿地更适合傍晚，住宿回到市区，吃饭停车都稳。</div>
+        </div>
+        <div class="card photo-card">
+          <img src="assets/manzhouli-night.png" alt="满洲里夜景示意图">
+          <div class="photo-caption">D6：满洲里安排一晚市区住宿，保留轻松夜游，不住景区酒店。</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="car">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">租车建议</h2>
+          <p class="section-note">6 人优先锁 7 座 MPV；如果增加到 8-9 人，直接改两辆车，比一辆 9 座车更灵活也更好装行李。</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>人数</th>
+                <th>推荐车型</th>
+                <th>适合度</th>
+                <th>旺季估价</th>
+                <th>关键提醒</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>6 人</td>
+                <td>别克 GL8/传祺 M8 同级 MPV</td>
+                <td>高</td>
+                <td class="money">800-1500 元/天</td>
+                <td>常规路线够用，乘坐舒服，后备箱比多数 7 座 SUV 实用。</td>
+              </tr>
+              <tr>
+                <td>6 人</td>
+                <td>汉兰达/途昂/探险者类 7 座 SUV</td>
+                <td>中</td>
+                <td class="money">700-1300 元/天</td>
+                <td>通过性略好，但第三排和行李空间更紧。</td>
+              </tr>
+              <tr>
+                <td>8-9 人</td>
+                <td>GL8 + 5 座 SUV，或两辆 5/7 座车</td>
+                <td>高</td>
+                <td class="money">1200-2200 元/天合计</td>
+                <td>分摊行李和驾驶压力，遇到小镇停车也更灵活。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="notice" style="margin-top: 18px;">
+          <strong>MPV 路况结论：</strong>走铺装公路、正规景区道路、城区/镇区住宿，MPV 没问题。不要开进草地、牧道、雨后土路或不明小路；草原路段不夜间赶路，遇到大雨或浓雾直接取消非必要观景点。
+        </div>
+      </div>
+    </section>
+
+    <section class="section band" id="hotels">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">住宿策略</h2>
+          <p class="section-note">全部选择城区或镇区，优先免费停车、家庭房/三人间、评分 4.6+、热水评价稳定。</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>城市/镇区</th>
+                <th>推荐区域</th>
+                <th>目标价格</th>
+                <th>订房建议</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>海拉尔</td>
+                <td>成吉思汗广场、河东/河西商圈、机场到市区沿线</td>
+                <td class="money">300-550 元/间夜</td>
+                <td>方便取车和补给，优先连锁中端或新开酒店。</td>
+              </tr>
+              <tr>
+                <td>额尔古纳</td>
+                <td>拉布大林主城区、额尔古纳大街附近</td>
+                <td class="money">300-600 元/间夜</td>
+                <td>不必住湿地景区内，市区吃饭停车更方便。</td>
+              </tr>
+              <tr>
+                <td>室韦/恩和</td>
+                <td>镇区主街附近</td>
+                <td class="money">350-700 元/间夜</td>
+                <td>木刻楞民宿要看隔音和独卫，带娃优先正规酒店/客栈。</td>
+              </tr>
+              <tr>
+                <td>根河</td>
+                <td>根河市区主街、近敖鲁古雅方向出城口</td>
+                <td class="money">250-500 元/间夜</td>
+                <td>重点看热水、供暖/保温和停车评价。</td>
+              </tr>
+              <tr>
+                <td>黑山头</td>
+                <td>黑山头镇区</td>
+                <td class="money">300-700 元/间夜</td>
+                <td>看日落方便，但住宿条件一般；舒适优先可回额尔古纳。</td>
+              </tr>
+              <tr>
+                <td>满洲里</td>
+                <td>中苏金街、套娃广场外圈、市中心</td>
+                <td class="money">300-650 元/间夜</td>
+                <td>选择多，优先市区，不住景区内部酒店。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="budget">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">粗预算</h2>
+          <p class="section-note">按 6 人本地费用 + 3 大 2 小机票估算。新增人员机票自理，但应分摊租车、油费和部分住宿。</p>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>项目</th>
+                <th>控制目标</th>
+                <th>说明</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>机票 3 大 2 小</td>
+                <td class="money">8500-10500 元</td>
+                <td>低于 8500 可以直接锁；超过 12000 会明显挤压本地预算。</td>
+              </tr>
+              <tr>
+                <td>租车 6-7 天</td>
+                <td class="money">5500-8500 元</td>
+                <td>GL8/同级 MPV，含基础保障但不含全部油费。</td>
+              </tr>
+              <tr>
+                <td>油费/停车</td>
+                <td class="money">1200-1800 元</td>
+                <td>主路过路费不高，油费是大头。</td>
+              </tr>
+              <tr>
+                <td>住宿 6 晚</td>
+                <td class="money">5400-9000 元</td>
+                <td>按 3 间房，每间 300-500 元更可控。</td>
+              </tr>
+              <tr>
+                <td>餐饮</td>
+                <td class="money">3600-5200 元</td>
+                <td>6 人，简餐 + 几顿蒙餐。</td>
+              </tr>
+              <tr>
+                <td>门票/体验</td>
+                <td class="money">1800-3500 元</td>
+                <td>驯鹿、湿地、骑马/牧户体验视选择浮动。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="section band" id="packing">
+      <div class="container">
+        <div class="section-head">
+          <h2 class="section-title">必要装备</h2>
+          <p class="section-note">呼伦贝尔夏天白天晒、早晚凉、风大，带娃自驾要按“长车程 + 强紫外线 + 草地蚊虫”准备。</p>
+        </div>
+        <div class="checklist">
+          <div class="check">
+            <h3>证件和订单</h3>
+            <ul>
+              <li>成人身份证、儿童身份证或户口本</li>
+              <li>驾驶证、租车订单、酒店订单</li>
+              <li>机票和关键订单离线截图</li>
+            </ul>
+          </div>
+          <div class="check">
+            <h3>衣物和防晒</h3>
+            <ul>
+              <li>短袖、快干长袖长裤、防晒衣</li>
+              <li>薄外套/冲锋衣或抓绒</li>
+              <li>SPF50 防晒、帽子、墨镜</li>
+            </ul>
+          </div>
+          <div class="check">
+            <h3>防虫和药品</h3>
+            <ul>
+              <li>儿童可用驱蚊液、止痒药膏</li>
+              <li>儿童退烧药、肠胃药、晕车药</li>
+              <li>创可贴、碘伏棉签、体温计</li>
+            </ul>
+          </div>
+          <div class="check">
+            <h3>车内用品</h3>
+            <ul>
+              <li>手机支架、车充、充电宝</li>
+              <li>离线地图、纸巾、湿巾、垃圾袋</li>
+              <li>保温杯、小毯子、颈枕</li>
+            </ul>
+          </div>
+          <div class="check">
+            <h3>食物饮水</h3>
+            <ul>
+              <li>矿泉水、常温牛奶/酸奶</li>
+              <li>面包、饼干、水果、儿童零食</li>
+              <li>不要赌“下一家餐厅很近”</li>
+            </ul>
+          </div>
+          <div class="check">
+            <h3>儿童安全</h3>
+            <ul>
+              <li>5 岁儿童安全座椅或增高垫</li>
+              <li>9 岁孩子身高不足也建议增高垫</li>
+              <li>喂驯鹿时不追赶、不尖叫、不从背后靠近</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container grid-2">
+        <div>
+          <h2 class="section-title">出发前 3 天检查</h2>
+          <p class="lead">把高风险变量提前消掉，到了当地只做轻量调整。</p>
+        </div>
+        <div class="check">
+          <ul>
+            <li>重新确认机票时间、免费行李额、儿童票证件信息。</li>
+            <li>确认租车门店、取还车时间、车型是否为指定车型。</li>
+            <li>确认酒店都在城区/镇区，有停车位、独立卫浴、热水评价稳定。</li>
+            <li>下载离线地图，收藏海拉尔、额尔古纳、根河、黑山头、满洲里的加油站和医院。</li>
+            <li>看 7 天天气预报，雨天路段改成更保守的城市/景区安排。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <span>呼伦贝尔家庭自驾旅行分享版 · 更新日期 2026-06-16</span>
+      <span>页面图片为 AI 生成示意图，具体景观以实际天气和现场为准。</span>
+    </div>
+  </footer>
+</body>
+</html>
