@@ -28,16 +28,17 @@ Current recommended route is a non-crossing north loop:
 2. D2: Hailar -> Morigele River -> Erguna Wetland -> Erguna. Sleep in Erguna city.
 3. D3: Erguna -> Genhe -> Aoluguya Reindeer Tribe. Reindeer feeding is a must-have child-focused stop. Sleep in Genhe city.
 4. D4: Genhe -> Mordaoga forest section -> Enhe/Shiwei. Forest and border-town day. Sleep in Enhe or Shiwei town.
-5. D5: Enhe/Shiwei -> border-line or Wulan Mountain direction -> Heishantou. Sunset, horse riding, or herder experience. Sleep in Heishantou town.
-6. D6: Heishantou -> border road / 186 Ribbon River -> Manzhouli. Sleep in Manzhouli city.
-7. D7: Manzhouli -> Hulun Lake / Zhalainuoer -> Hailar -> Nanjing. Keep this light for return logistics.
+5. D5: Enhe/Shiwei -> Heishantou short horse ride / light herder experience -> 186 Ribbon River -> Manzhouli. Sleep in Manzhouli city.
+6. D6: Manzhouli -> Hulun Lake / Zhalainuoer -> Hailar. Sleep in Hailar city.
+7. D7: Hailar -> Nanjing. Return logistics only; plan airport car return/check-in around 10:30 for the 13:15 HO2242 flight.
 
-Rationale: this replaced the previous crossing-looking route by swapping D3 and D4. The route now goes from Hailar east side to Erguna, then Genhe/Aoluguya, then Enhe/Shiwei, then south along the border toward Heishantou and Manzhouli.
+Rationale: this replaced the previous crossing-looking route by swapping D3 and D4. Later, after flights were booked, the final two days were adjusted so the family does not need to leave Manzhouli around 7:00 on the 13:15 return-flight day. Heishantou is now a short stop rather than an overnight base; D5 pushes on to Manzhouli for night views, and D6 returns to Hailar after Hulun Lake/Zhalainuoer.
 
 ## Non-Negotiable User Preferences
 
 - Include Aoluguya reindeer feeding.
 - Do not arrange lodging inside scenic areas. Use city/town lodging instead.
+- Do not book Heishantou lodging in the current plan unless the user explicitly reopens that tradeoff. Heishantou is currently a short horse-riding / herder-experience stop, not an overnight stop.
 - Prefer paved roads, official scenic-area roads, and town/city bases.
 - MPV is acceptable only for conventional paved-road routing. Avoid grassland tracks, pasture roads, rainy dirt roads, unknown shortcuts, and night driving on grassland sections.
 - Do not add Arxan or far detours unless the user explicitly chooses a longer trip.
@@ -75,8 +76,8 @@ If the user explicitly asks to restart monitoring, use these historical constrai
 
 Current planning priority:
 
-- Rental car: compare GL8 / Trumpchi M8 / 7-seat SUV inventory for July 14 pickup around 16:00 and July 20 return before airport check-in.
-- Hotels: lock refundable city/town lodging for Hailar, Erguna, Genhe, Enhe/Shiwei, Heishantou or Erguna, and Manzhouli.
+- Rental car: compare GL8 / Trumpchi M8 / 7-seat SUV inventory for July 15 morning pickup versus July 14 arrival pickup, and July 20 return before airport check-in. If July 14 arrival pickup and July 15 morning pickup both price as the same number of rental days, prefer arrival-day pickup for convenience.
+- Hotels: lock refundable city/town lodging for Hailar twice (D1 and D6), Erguna, Genhe, Enhe/Shiwei, and Manzhouli. Do not include a Heishantou overnight in the current baseline.
 - Budget: the actual flight total has not been recorded in the project yet. Do not invent it; ask the user or leave it as "按实际订单补录".
 
 ## Editing Rules
